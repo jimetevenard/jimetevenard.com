@@ -9,8 +9,8 @@
 }
 
 // sources
-copy('img/**/*', 'dist/img', copyCallback);
-copy('css/*.min.css', 'dist/css', copyCallback);
-copy('branding/**/*', 'dist/branding', copyCallback);
-copy('*.html', 'dist', copyCallback);
-copy('favicon.ico', 'dist', copyCallback);
+copy('img/**/*', 'docs/img', copyCallback);
+copy('css/*.min.css', 'docs/css', copyCallback);
+copy('branding/**/*', 'docs/branding', copyCallback);
+copy('*.html', 'docs', copyCallback);
+copy('favicon.ico', 'docs', copyCallback);
