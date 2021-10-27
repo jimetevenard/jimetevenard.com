@@ -1,0 +1,33 @@
+{
+  "name": "jimetevenard.com",
+  "version": "1.1.2",
+  "description": "Site Jim Etevenard",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "copy": "^0.3.2",
+    "ftp-deploy": "^2.3.8",
+    "http-server": "^0.12.1",
+    "minify": "^4.1.3",
+    "node-sass": "^4.13.1"
+  },
+  "scripts": {
+    "build": "npm run compile-and-minify && npm run copy-dist",
+    "compile-sass": "node-sass sass/base.scss css/base.css",
+    "copy-dist": "node build/copy.js",
+    "min-css": "minify css/base.css > css/base.min.css",
+    "compile-and-minify": "npm run compile-sass && npm run min-css",
+    "serve": "http-server -c-1 ./dist/",
+    "start": "npm run build && npm run serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimetevenard/jimetevenard.com.git"
+  },
+  "author": "Jim ETEVENARD",
+  "license": "Copyright",
+  "bugs": {
+    "url": "https://github.com/jimetevenard/jimetevenard.com/issues"
+  },
+  "homepage": "http://www.jimetevenard.com/"
+}
