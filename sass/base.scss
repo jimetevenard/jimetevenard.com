@@ -91,8 +91,9 @@ b,
 /* ### */
 #bloc-titre {
     text-align: center;
-    margin-top: 120px;
-    margin-bottom: 110px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -100,6 +101,7 @@ h1 {
     font-size: 1.5em;
     line-height: 1.6em;
     color: #3d494e;
+    margin: 0 auto;
 }
 
 a:link {
@@ -341,7 +343,7 @@ div.wrapper .copyright {
 #fleche {
     text-align: center;
     position: relative;
-    bottom: 60px;
+    bottom: 80px;
     display: none;
     opacity: 0.6;
 
@@ -359,15 +361,16 @@ div.wrapper .copyright {
 
 #fleche img {
     position: relative;
-
-
-    -webkit-animation: shake 1s alternate infinite;
-    -moz-animation: shake 1s alternate infinite;
-    -o-animation: shake 1s alternate infinite;
-    -ms-animation: shake 1s alternate infinite;
     animation: shake 1s alternate infinite;
 }
 
+@keyframes shake{
+    from{bottom: 0;}
+    30%{bottom: 0;}
+    50%{bottom: 6px}
+    70%{bottom: 0;}
+    to{bottom: 0;}
+}
 
 .no-bottom {
     margin-bottom: 0;
