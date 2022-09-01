@@ -11,6 +11,7 @@
 // sources
 copy('img/**/*', 'dist/img', copyCallback);
 copy('css/*.min.css', 'dist/css', copyCallback);
+copy('js/*.js', 'dist/js', copyCallback);
 copy('branding/**/*', 'dist/branding', copyCallback);
 copy('*.html', 'dist', copyCallback);
 copy('favicon.ico', 'dist', copyCallback);
