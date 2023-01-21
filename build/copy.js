@@ -1,6 +1,5 @@
  var copy = require('copy');
- var fs = require('fs');
- 
+
  var copyCallback = function(err, files) {
   if (err) throw err;
   if(files && files.length) {
