@@ -1,16 +1,40 @@
- var copy = require('copy');
+const fs = require("fs")
+const path = require("path")
 
- var copyCallback = function(err, files) {
-  if (err) throw err;
-  if(files && files.length) {
-    files.forEach((f) => console.log('file copied : ' + f.dest));
-  }
+const isDirectorySync = function(src){
+  const exists = fs.existsSync(src);
+  const stats = exists && fs.statSync(src);
+  return exists && stats.isDirectory();
 }
 
-// sources
-copy('img/**/*', 'dist/img', copyCallback);
-copy('css/*.min.css', 'dist/css', copyCallback);
-copy('js/*.js', 'dist/js', copyCallback);
-copy('branding/**/*', 'dist/branding', copyCallback);
-copy('*.html', 'dist', copyCallback);
-copy('favicon.ico', 'dist', copyCallback);
+/**
+ * Look ma, it's cp -R.
+ * @param {string} src  The path to the thing to copy.
+ * @param {string} dest The path to the new copy.
+ */
+const copyRecursiveSync = function(src, dest) {
+  if (isDirectorySync(src)) {
+    fs.mkdirSync(dest);
+    fs.readdirSync(src).forEach(function(childItemName) {
+      copyRecursiveSync(path.join(src, childItemName),
+                        path.join(dest, childItemName));
+    });
+  } else {
+    fs.copyFileSync(src, dest);
+  }
+};
+
+const copySiteFiles = function(){
+  
+  if(isDirectorySync('dist')) fs.rmdirSync('dist', {recursive: true});
+
+  fs.mkdirSync('dist');
+  copyRecursiveSync('img', 'dist/img');
+  copyRecursiveSync('css', 'dist/css');
+  copyRecursiveSync('js', 'dist/js');
+  fs.copyFileSync('index.html', 'dist/index.html');
+  fs.copyFileSync('favicon.ico', 'dist/favicon.ico');
+}
+
+copySiteFiles();
+
